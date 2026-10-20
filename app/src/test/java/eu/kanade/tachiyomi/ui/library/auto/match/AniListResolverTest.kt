@@ -5,6 +5,7 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
@@ -240,6 +241,73 @@ class AniListResolverTest {
         val saved = cache.getMetadata(30021L)
         saved.shouldNotBeNull()
         saved.id shouldBe 30021L
+    }
+
+    @Test
+    fun `saveMetadata ve saveMatch ile yazilan dosyanin metni version alanini icerir`() = runTest {
+        val candidate = sampleCandidate(id = 30021L, title = "Death Note")
+        cache.saveMetadata(candidate)
+
+        val metadataFile = File(tempDir, "metadata/30021.json")
+        metadataFile.exists() shouldBe true
+        val metadataText = metadataFile.readText(Charsets.UTF_8)
+        metadataText shouldContain "\"version\""
+        metadataText shouldContain "\"version\":2"
+
+        cache.saveMatch(
+            mangaId = 1L,
+            title = "Death Note",
+            authors = listOf("Tsugumi Ohba"),
+            trackerRemoteId = 30021L,
+            status = MatchStatus.MATCHED,
+            reason = MatchReason.SCORE,
+            score = 1.0,
+            anilistId = 30021L,
+        )
+
+        val matchFile = File(tempDir, "matches/1.json")
+        matchFile.exists() shouldBe true
+        val matchText = matchFile.readText(Charsets.UTF_8)
+        matchText shouldContain "\"version\""
+        matchText shouldContain "\"version\":2"
+    }
+
+    @Test
+    fun `version alani olmayan bir JSON dosyasi bozuk sayilip silinir ve yeniden cekilir`() = runTest {
+        val metadataDir = File(tempDir, "metadata")
+        metadataDir.mkdirs()
+        val noVersionFile = File(metadataDir, "30021.json")
+        // "version" alanı bulunmayan eksik JSON metni yaz
+        noVersionFile.writeText("""
+            {
+                "candidate": {
+                    "id": 30021,
+                    "titleRomaji": "Death Note",
+                    "genres": ["Mystery"],
+                    "tags": [{"name": "Police", "rank": 94}]
+                },
+                "timestamp": $currentTime
+            }
+        """.trimIndent())
+
+        // Cache üzerinden getMetadata çağrıldığında MissingFieldException yakalanıp null dönmeli ve dosya silinmeli
+        cache.getMetadata(30021L).shouldBeNull()
+        noVersionFile.exists() shouldBe false
+
+        // Resolver akışında taze veri kaynaktan çekilmeli ve version içeren dosya olarak diske kaydedilmeli
+        val freshCandidate = sampleCandidate(id = 30021L, title = "Death Note")
+        fakeSource.idMapToReturn[30021L] = freshCandidate
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note", anilistTrackerId = 30021L)
+        val result = resolver.resolve(input)
+
+        result.status shouldBe MatchStatus.MATCHED
+        fakeSource.getByIdsCalls shouldHaveSize 1
+
+        val reSavedFile = File(metadataDir, "30021.json")
+        reSavedFile.exists() shouldBe true
+        val reSavedText = reSavedFile.readText(Charsets.UTF_8)
+        reSavedText shouldContain "\"version\":2"
     }
 
     // ========================================================

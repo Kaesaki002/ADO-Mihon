@@ -16,14 +16,14 @@ const val ANILIST_CACHE_VERSION = 2
 
 @Serializable
 data class AniListMetadataCacheEntry(
-    val version: Int = ANILIST_CACHE_VERSION,
+    val version: Int,
     val candidate: AniListMediaCandidate,
     val timestamp: Long,
 )
 
 @Serializable
 data class MangaMatchCacheEntry(
-    val version: Int = ANILIST_CACHE_VERSION,
+    val version: Int,
     val mangaId: Long,
     val normalizedTitle: String,
     val normalizedAuthors: String,

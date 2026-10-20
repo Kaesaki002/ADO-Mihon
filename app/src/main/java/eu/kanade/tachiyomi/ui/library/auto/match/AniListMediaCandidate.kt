@@ -42,6 +42,7 @@ data class AniListTag(
 val AniListJsonParser = Json {
     ignoreUnknownKeys = true
     isLenient = true
+    encodeDefaults = true
 }
 
 @Serializable
