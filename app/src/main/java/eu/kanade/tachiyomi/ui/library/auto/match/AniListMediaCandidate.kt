@@ -6,6 +6,7 @@ import kotlinx.serialization.json.Json
 /**
  * Eşleştirmede kullanılacak saf AniList aday modeli.
  */
+@Serializable
 data class AniListMediaCandidate(
     val id: Long,
     val titleRomaji: String? = null,
@@ -26,6 +27,7 @@ data class AniListMediaCandidate(
             .filter { it.isNotBlank() }
 }
 
+@Serializable
 data class AniListTag(
     val name: String,
     val rank: Int,
