@@ -1,0 +1,326 @@
+[
+  {
+    "id": 135083,
+    "title": {
+      "romaji": "WIND BREAKER",
+      "english": "WIND BREAKER",
+      "native": "WIND BREAKER"
+    },
+    "synonyms": [
+      "ウィンドブレイカ",
+      "วินด์เบรกเกอร์",
+      "WIND BREAKER—防風少年—"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama"
+    ],
+    "tags": [
+      {
+        "name": "Delinquents",
+        "rank": 93
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 92
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 83
+      },
+      {
+        "name": "Found Family",
+        "rank": 83
+      },
+      {
+        "name": "Shounen",
+        "rank": 81
+      },
+      {
+        "name": "Gangs",
+        "rank": 80
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 79
+      },
+      {
+        "name": "Ensemble Cast",
+        "rank": 79
+      },
+      {
+        "name": "Martial Arts",
+        "rank": 79
+      },
+      {
+        "name": "Urban",
+        "rank": 79
+      },
+      {
+        "name": "Tsundere",
+        "rank": 73
+      },
+      {
+        "name": "School",
+        "rank": 60
+      },
+      {
+        "name": "Crime",
+        "rank": 60
+      },
+      {
+        "name": "Primarily Teen Cast",
+        "rank": 60
+      },
+      {
+        "name": "Criminal Organization",
+        "rank": 60
+      },
+      {
+        "name": "Bullying",
+        "rank": 60
+      },
+      {
+        "name": "LGBTQ+ Themes",
+        "rank": 60
+      },
+      {
+        "name": "Crossdressing",
+        "rank": 56
+      },
+      {
+        "name": "Transgender",
+        "rank": 42
+      },
+      {
+        "name": "Heterosexual",
+        "rank": 40
+      },
+      {
+        "name": "Rescue",
+        "rank": 40
+      },
+      {
+        "name": "Work",
+        "rank": 40
+      },
+      {
+        "name": "Restaurant",
+        "rank": 40
+      },
+      {
+        "name": "Bar",
+        "rank": 40
+      },
+      {
+        "name": "Twins",
+        "rank": 40
+      },
+      {
+        "name": "Cute Boys Doing Cute Things",
+        "rank": 33
+      },
+      {
+        "name": "Tragedy",
+        "rank": 33
+      },
+      {
+        "name": "Iyashikei",
+        "rank": 26
+      }
+    ],
+    "startDate": {
+      "year": 2021
+    },
+    "format": "MANGA",
+    "chapters": null,
+    "popularity": 22287,
+    "staff": {
+      "edges": [
+        {
+          "role": "Translator (English)",
+          "node": {
+            "name": {
+              "full": "Jacqueline Fung",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Satoru Nii",
+              "native": "にいさとる"
+            }
+          }
+        },
+        {
+          "role": "Editor",
+          "node": {
+            "name": {
+              "full": "Yuuta Hiraoka",
+              "native": "平岡雄大"
+            }
+          }
+        },
+        {
+          "role": "Translator (Chinese)",
+          "node": {
+            "name": {
+              "full": "Ziling Guo",
+              "native": "郭子菱"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Tetsuya Okuyama",
+              "native": "奧山哲矢"
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Jan-Christoph Müller",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 86099,
+    "title": {
+      "romaji": "Wind Breaker",
+      "english": "Wind Breaker",
+      "native": "윈드브레이커"
+    },
+    "synonyms": [
+      "ウインドブレーカー",
+      "冲锋衣",
+      "衝鋒衣",
+      "ปั่นสู้ฝัน Wind Breaker"
+    ],
+    "countryOfOrigin": "KR",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Sports"
+    ],
+    "tags": [
+      {
+        "name": "Cycling",
+        "rank": 98
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 91
+      },
+      {
+        "name": "School",
+        "rank": 90
+      },
+      {
+        "name": "Full Color",
+        "rank": 89
+      },
+      {
+        "name": "Kuudere",
+        "rank": 89
+      },
+      {
+        "name": "Heterosexual",
+        "rank": 81
+      },
+      {
+        "name": "Delinquents",
+        "rank": 80
+      },
+      {
+        "name": "Tragedy",
+        "rank": 80
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 79
+      },
+      {
+        "name": "Fitness",
+        "rank": 73
+      },
+      {
+        "name": "Slapstick",
+        "rank": 70
+      },
+      {
+        "name": "Bullying",
+        "rank": 70
+      },
+      {
+        "name": "Meta",
+        "rank": 64
+      },
+      {
+        "name": "Gambling",
+        "rank": 62
+      },
+      {
+        "name": "Suicide",
+        "rank": 60
+      },
+      {
+        "name": "Mafia",
+        "rank": 60
+      },
+      {
+        "name": "Love Triangle",
+        "rank": 55
+      },
+      {
+        "name": "Female Harem",
+        "rank": 50
+      },
+      {
+        "name": "Long Strip",
+        "rank": 50
+      },
+      {
+        "name": "Foreign",
+        "rank": 50
+      },
+      {
+        "name": "Drugs",
+        "rank": 50
+      }
+    ],
+    "startDate": {
+      "year": 2013
+    },
+    "format": "MANGA",
+    "chapters": 554,
+    "popularity": 42717,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Yong-Seok Jo",
+              "native": "조용석 "
+            }
+          }
+        }
+      ]
+    }
+  }
+]

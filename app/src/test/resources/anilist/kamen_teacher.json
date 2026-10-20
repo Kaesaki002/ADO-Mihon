@@ -1,0 +1,251 @@
+[
+  {
+    "id": 32858,
+    "title": {
+      "romaji": "Kamen Teacher",
+      "english": null,
+      "native": "仮面ティーチャー"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "tags": [
+      {
+        "name": "Male Protagonist",
+        "rank": 79
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 79
+      },
+      {
+        "name": "School",
+        "rank": 79
+      },
+      {
+        "name": "Boys' Love",
+        "rank": 60
+      }
+    ],
+    "startDate": {
+      "year": 1999
+    },
+    "format": "MANGA",
+    "chapters": 8,
+    "popularity": 95,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Atsuki Kyouyama",
+              "native": "京山あつき"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 36853,
+    "title": {
+      "romaji": "Kamen Teacher",
+      "english": null,
+      "native": "仮面ティーチャー"
+    },
+    "synonyms": [
+      "Masked Teacher",
+      "Kamen Sensei",
+      "Masked Teacher",
+      "가면티쳐"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Ecchi"
+    ],
+    "tags": [
+      {
+        "name": "Seinen",
+        "rank": 79
+      },
+      {
+        "name": "Teacher",
+        "rank": 79
+      },
+      {
+        "name": "School",
+        "rank": 50
+      },
+      {
+        "name": "Tokusatsu",
+        "rank": 20
+      },
+      {
+        "name": "Henshin",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2006
+    },
+    "format": "MANGA",
+    "chapters": 39,
+    "popularity": 1742,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tooru Fujisawa",
+              "native": "藤沢とおる"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Akitsugu Mizumoto",
+              "native": "水元あきつぐ"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Dynamic Tarou",
+              "native": "ダイナミック太郎"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 93354,
+    "title": {
+      "romaji": "Kamen Teacher BLACK",
+      "english": null,
+      "native": "仮面ティーチャーBLACK"
+    },
+    "synonyms": [
+      "Masked Teacher",
+      "Kamen Teacher vs POLICE"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "tags": [
+      {
+        "name": "School",
+        "rank": 20
+      },
+      {
+        "name": "Seinen",
+        "rank": 20
+      },
+      {
+        "name": "Tokusatsu",
+        "rank": 20
+      },
+      {
+        "name": "Henshin",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2013
+    },
+    "format": "MANGA",
+    "chapters": 47,
+    "popularity": 335,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tooru Fujisawa",
+              "native": "藤沢とおる"
+            }
+          }
+        },
+        {
+          "role": "Translator (French)",
+          "node": {
+            "name": {
+              "full": "Anne-Sophie Thevenon",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (French)",
+          "node": {
+            "name": {
+              "full": "Simona Maccaroni",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 136487,
+    "title": {
+      "romaji": "Kamen Teacher vs POLICE",
+      "english": null,
+      "native": "仮面ティーチャー vs POLICE"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "tags": [
+      {
+        "name": "Seinen",
+        "rank": 60
+      },
+      {
+        "name": "Tokusatsu",
+        "rank": 20
+      },
+      {
+        "name": "Henshin",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2013
+    },
+    "format": "MANGA",
+    "chapters": 2,
+    "popularity": 122,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tooru Fujisawa",
+              "native": "藤沢とおる"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

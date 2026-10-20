@@ -1,0 +1,613 @@
+[
+  {
+    "id": 75757,
+    "title": {
+      "romaji": "Shokugeki no Souma",
+      "english": "Food Wars!: Shokugeki no Soma",
+      "native": "食戟のソーマ"
+    },
+    "synonyms": [
+      "Kulinarne pojedynki"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Ecchi"
+    ],
+    "tags": [
+      {
+        "name": "Food",
+        "rank": 96
+      },
+      {
+        "name": "School",
+        "rank": 92
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 85
+      },
+      {
+        "name": "Shounen",
+        "rank": 82
+      },
+      {
+        "name": "Large Breasts",
+        "rank": 79
+      },
+      {
+        "name": "Nudity",
+        "rank": 74
+      },
+      {
+        "name": "Educational",
+        "rank": 62
+      },
+      {
+        "name": "Time Skip",
+        "rank": 53
+      },
+      {
+        "name": "Incest",
+        "rank": 40
+      },
+      {
+        "name": "Tsundere",
+        "rank": 40
+      },
+      {
+        "name": "Desert",
+        "rank": 10
+      }
+    ],
+    "startDate": {
+      "year": 2012
+    },
+    "format": "MANGA",
+    "chapters": 324,
+    "popularity": 48134,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuki Morisaki",
+              "native": "森崎友紀"
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Felipe Monte",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Antje Bockel",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Gemma Tarrés",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French)",
+          "node": {
+            "name": {
+              "full": "Lilian Lebrun",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish: vols 17-36)",
+          "node": {
+            "name": {
+              "full": "Agnieszka Zychma",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish: vols 1-16)",
+          "node": {
+            "name": {
+              "full": "Beata Trojnar",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editor (Portuguese: vol 1-5)",
+          "node": {
+            "name": {
+              "full": "Diógenes Dih",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editor",
+          "node": {
+            "name": {
+              "full": "Seijirou Nakaji",
+              "native": "中路靖二郎"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Haruki Kurose",
+              "native": "黒越晴貴"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kyousuke Iwashiro",
+              "native": "岩城京介"
+            }
+          }
+        },
+        {
+          "role": "Lettering (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Ricardo Santana",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 103252,
+    "title": {
+      "romaji": "Shokugeki no Sanji",
+      "english": "One Piece: Shokugeki no Sanji",
+      "native": "食戟のサンジ"
+    },
+    "synonyms": [
+      "Food Wars!: Shokugeki no Sanji",
+      "Sanjis Food Wars",
+      "식극의 상디"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy"
+    ],
+    "tags": [
+      {
+        "name": "Food",
+        "rank": 98
+      },
+      {
+        "name": "Episodic",
+        "rank": 79
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 70
+      },
+      {
+        "name": "Pirates",
+        "rank": 66
+      },
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "Nudity",
+        "rank": 40
+      }
+    ],
+    "startDate": {
+      "year": 2018
+    },
+    "format": "MANGA",
+    "chapters": 6,
+    "popularity": 7007,
+    "staff": {
+      "edges": [
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Eiichirou Oda",
+              "native": "尾田栄一郎"
+            }
+          }
+        },
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuki Morisaki",
+              "native": "森崎友紀"
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Antje Bockel",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 86160,
+    "title": {
+      "romaji": "Shokugeki no Souma: L'étoile",
+      "english": null,
+      "native": "食戟のソーマ L'etoile-エトワール-"
+    },
+    "synonyms": [
+      "Food Wars: Etoile"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "tags": [
+      {
+        "name": "Food",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 50
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 20
+      },
+      {
+        "name": "Foreign",
+        "rank": 20
+      },
+      {
+        "name": "Primarily Adult Cast",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2015
+    },
+    "format": "MANGA",
+    "chapters": 50,
+    "popularity": 2467,
+    "staff": {
+      "edges": [
+        {
+          "role": "Character Design",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Michiko Itou",
+              "native": "伊藤美智子"
+            }
+          }
+        },
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Taiki Akitoki",
+              "native": "あきときたいき"
+            }
+          }
+        },
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        },
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Yuki Morisaki",
+              "native": "森崎友紀"
+            }
+          }
+        },
+        {
+          "role": "Lettering (French)",
+          "node": {
+            "name": {
+              "full": "Isabelle Bovey",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French)",
+          "node": {
+            "name": {
+              "full": "Lilian Lebrun",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 128605,
+    "title": {
+      "romaji": "Shokugeki no Souma: Yomikiri-ban",
+      "english": null,
+      "native": "食戟のソーマ: 読み切り版"
+    },
+    "synonyms": [
+      "Food Wars One-shot",
+      "Shokugeki no Souma Pilot",
+      "Food Wars Pilot"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Ecchi"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "School",
+        "rank": 20
+      },
+      {
+        "name": "Food",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2012
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 654,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 90653,
+    "title": {
+      "romaji": "Shokugeki no Souma: à la carte",
+      "english": null,
+      "native": "食戟のソーマ ～à la carte～"
+    },
+    "synonyms": [
+      "Food Wars: à la Carte"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Ecchi"
+    ],
+    "tags": [
+      {
+        "name": "School",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2014
+    },
+    "format": "NOVEL",
+    "chapters": 24,
+    "popularity": 646,
+    "staff": {
+      "edges": [
+        {
+          "role": "Illustration",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Michiko Itou",
+              "native": "伊藤美智子"
+            }
+          }
+        },
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuki Morisaki",
+              "native": "森崎友紀"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 110338,
+    "title": {
+      "romaji": "Shokugeki no Souma: Le dessert",
+      "english": "Food Wars!: Shokugeki no Soma ~Le Dessert~",
+      "native": "食戟のソーマ ～Le dessert～"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Ecchi"
+    ],
+    "tags": [
+      {
+        "name": "Food",
+        "rank": 75
+      },
+      {
+        "name": "Time Skip",
+        "rank": 50
+      },
+      {
+        "name": "Shounen",
+        "rank": 30
+      },
+      {
+        "name": "Ensemble Cast",
+        "rank": 20
+      },
+      {
+        "name": "School",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2019
+    },
+    "format": "MANGA",
+    "chapters": 3,
+    "popularity": 3032,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Shun Saeki",
+              "native": "佐伯俊"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuuto Tsukuda",
+              "native": "附田祐斗"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Yuki Morisaki",
+              "native": "森崎友紀"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,855 @@
+[
+  {
+    "id": 30021,
+    "title": {
+      "romaji": "DEATH NOTE",
+      "english": "Death Note",
+      "native": "DEATH NOTE"
+    },
+    "synonyms": [
+      "デスノート",
+      "Ölüm Defteri",
+      "Death Note - Zápisník smrti",
+      "Beležnica smrti",
+      "Τετράδιο θανάτου",
+      "Death Note: Тетрадка на смъртта",
+      "死亡筆記本",
+      "데스노트"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "tags": [
+      {
+        "name": "Detective",
+        "rank": 96
+      },
+      {
+        "name": "Police",
+        "rank": 94
+      },
+      {
+        "name": "Anti-Hero",
+        "rank": 93
+      },
+      {
+        "name": "Tragedy",
+        "rank": 92
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 92
+      },
+      {
+        "name": "Crime",
+        "rank": 91
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 85
+      },
+      {
+        "name": "Philosophy",
+        "rank": 79
+      },
+      {
+        "name": "Gods",
+        "rank": 77
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 76
+      },
+      {
+        "name": "Espionage",
+        "rank": 73
+      },
+      {
+        "name": "Time Skip",
+        "rank": 67
+      },
+      {
+        "name": "Memory Manipulation",
+        "rank": 66
+      },
+      {
+        "name": "Shounen",
+        "rank": 66
+      },
+      {
+        "name": "Demons",
+        "rank": 49
+      },
+      {
+        "name": "Amnesia",
+        "rank": 48
+      },
+      {
+        "name": "Politics",
+        "rank": 46
+      },
+      {
+        "name": "Cult",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2003
+    },
+    "format": "MANGA",
+    "chapters": 108,
+    "popularity": 100696,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kahiro Kyouda",
+              "native": "京田果大"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Ryou Ogawa",
+              "native": "小川亮"
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English)",
+          "node": {
+            "name": {
+              "full": "Gia Cam Luc",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 4-7)",
+          "node": {
+            "name": {
+              "full": "Alexis Kirsch",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Marc Bernabé",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (French)",
+          "node": {
+            "name": {
+              "full": "Éric Montésinos",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 8-12)",
+          "node": {
+            "name": {
+              "full": "Tetsuichiro Miyaki",
+              "native": "みやきてついちろ"
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Kay Hermann",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French: vols 1-7)",
+          "node": {
+            "name": {
+              "full": "Myloo Anhmet",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish)",
+          "node": {
+            "name": {
+              "full": "Paweł Dybała",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 1-3)",
+          "node": {
+            "name": {
+              "full": "Pookie Rolf",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Italian)",
+          "node": {
+            "name": {
+              "full": "Giacomo Calorio",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French: vols 8-12)",
+          "node": {
+            "name": {
+              "full": "Shinya Seto",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing",
+          "node": {
+            "name": {
+              "full": "Kouji Yoshida",
+              "native": "吉田幸司"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Tatsunosuke Sonoda",
+              "native": "園田辰之助"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kazushi Hinoki",
+              "native": "ひのき一志"
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Rica Sakata",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Nobuhiro Satou",
+              "native": "佐藤伸洋"
+            }
+          }
+        },
+        {
+          "role": "Translator (Turkish)",
+          "node": {
+            "name": {
+              "full": "Hüseyin Erkin",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Swedish)",
+          "node": {
+            "name": {
+              "full": "Kami Anani",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (Portuguese) ",
+          "node": {
+            "name": {
+              "full": "Cassius Medaur",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Marcelo Del Greco",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (English)",
+          "node": {
+            "name": {
+              "full": "Maria Diaz",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 33645,
+    "title": {
+      "romaji": "DEATH NOTE",
+      "english": "Death Note: Taro Kagami",
+      "native": "DEATH NOTE"
+    },
+    "synonyms": [
+      "Death Note Episode 0",
+      "Death Note (Pilot)"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Mystery",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Male Protagonist",
+        "rank": 79
+      },
+      {
+        "name": "Gods",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "Police",
+        "rank": 20
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 20
+      },
+      {
+        "name": "Detective",
+        "rank": 20
+      },
+      {
+        "name": "School",
+        "rank": 20
+      },
+      {
+        "name": "Philosophy",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2003
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 5078,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        },
+        {
+          "role": "Editing",
+          "node": {
+            "name": {
+              "full": "Kouji Yoshida",
+              "native": "吉田幸司"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 115122,
+    "title": {
+      "romaji": "DEATH NOTE: Tokubetsu Yomikiri",
+      "english": "Death Note: a-Kira",
+      "native": "DEATH NOTE 特別読切"
+    },
+    "synonyms": [
+      "デスノート",
+      "Death Note: Special One-Shot",
+      "Death Note: Never Complete"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Mystery",
+      "Psychological",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Politics",
+        "rank": 90
+      },
+      {
+        "name": "Shounen",
+        "rank": 78
+      },
+      {
+        "name": "Satire",
+        "rank": 76
+      },
+      {
+        "name": "Tragedy",
+        "rank": 73
+      },
+      {
+        "name": "Demons",
+        "rank": 71
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 71
+      },
+      {
+        "name": "Police",
+        "rank": 63
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 62
+      },
+      {
+        "name": "Gods",
+        "rank": 60
+      },
+      {
+        "name": "Time Skip",
+        "rank": 40
+      },
+      {
+        "name": "Philosophy",
+        "rank": 40
+      },
+      {
+        "name": "Anti-Hero",
+        "rank": 40
+      }
+    ],
+    "startDate": {
+      "year": 2020
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 31534,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        },
+        {
+          "role": "Translator (English)",
+          "node": {
+            "name": {
+              "full": "Stephen Paul",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 127819,
+    "title": {
+      "romaji": "DEATH NOTE: Tanpenshuu",
+      "english": "Death Note Short Stories",
+      "native": "DEATH NOTE短編集"
+    },
+    "synonyms": [
+      "デスノート短編集",
+      "Historias Cortas de Death Note",
+      "Beležnica smrti: Kratke priče",
+      "Zápisník smrti: Povídky",
+      "Тетрадь смерти: истории"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Drama",
+      "Psychological",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Demons",
+        "rank": 79
+      },
+      {
+        "name": "Politics",
+        "rank": 79
+      },
+      {
+        "name": "Gods",
+        "rank": 79
+      },
+      {
+        "name": "Crime",
+        "rank": 79
+      },
+      {
+        "name": "Police",
+        "rank": 79
+      },
+      {
+        "name": "Detective",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 79
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 73
+      },
+      {
+        "name": "Anthology",
+        "rank": 68
+      },
+      {
+        "name": "Adoption",
+        "rank": 60
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 60
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 60
+      },
+      {
+        "name": "4-koma",
+        "rank": 60
+      },
+      {
+        "name": "Philosophy",
+        "rank": 60
+      },
+      {
+        "name": "Anti-Hero",
+        "rank": 60
+      },
+      {
+        "name": "Time Skip",
+        "rank": 60
+      },
+      {
+        "name": "Tragedy",
+        "rank": 20
+      },
+      {
+        "name": "Amnesia",
+        "rank": 20
+      },
+      {
+        "name": "Suicide",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2021
+    },
+    "format": "MANGA",
+    "chapters": 6,
+    "popularity": 9057,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        },
+        {
+          "role": "Translator (French)",
+          "node": {
+            "name": {
+              "full": "Thibaud Desbief",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Portguese)",
+          "node": {
+            "name": {
+              "full": "Edward Kondo",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Lettering (Portuguese)",
+          "node": {
+            "name": {
+              "full": "José Carlos Assumpção",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Rica Sakata",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Marcelo Naranjo",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 34941,
+    "title": {
+      "romaji": "DEATH NOTE C-Kira-hen",
+      "english": "Death Note: C-Kira",
+      "native": "DEATH NOTE Cキラ編"
+    },
+    "synonyms": [
+      "Death Note Special Chapter",
+      "DEATH NOTE 特別編",
+      "Death Note Tokubetsu-hen"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Mystery"
+    ],
+    "tags": [
+      {
+        "name": "Police",
+        "rank": 90
+      },
+      {
+        "name": "Philosophy",
+        "rank": 90
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 79
+      },
+      {
+        "name": "Suicide",
+        "rank": 75
+      },
+      {
+        "name": "Gods",
+        "rank": 73
+      },
+      {
+        "name": "Time Skip",
+        "rank": 70
+      },
+      {
+        "name": "Primarily Adult Cast",
+        "rank": 65
+      },
+      {
+        "name": "Revenge",
+        "rank": 20
+      },
+      {
+        "name": "Shounen",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2007
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 10044,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 135124,
+    "title": {
+      "romaji": "DEATH NOTE ni Rakugaki 4-koma",
+      "english": "Death Note: Four-Panel Comics",
+      "native": "DEATH NOTEにラクガキ4コマ"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Mystery",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "4-koma",
+        "rank": 80
+      },
+      {
+        "name": "Slapstick",
+        "rank": 79
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 79
+      },
+      {
+        "name": "Surreal Comedy",
+        "rank": 79
+      },
+      {
+        "name": "Tsundere",
+        "rank": 73
+      },
+      {
+        "name": "Shounen",
+        "rank": 70
+      }
+    ],
+    "startDate": {
+      "year": 2004
+    },
+    "format": "MANGA",
+    "chapters": 5,
+    "popularity": 1359,
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

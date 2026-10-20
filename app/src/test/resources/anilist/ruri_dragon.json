@@ -1,0 +1,228 @@
+[
+  {
+    "id": 127750,
+    "title": {
+      "romaji": "Ruri Dragon",
+      "english": null,
+      "native": "ルリドラゴン"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Slice of Life"
+    ],
+    "tags": [
+      {
+        "name": "Dragons",
+        "rank": 80
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 70
+      },
+      {
+        "name": "Shounen",
+        "rank": 66
+      },
+      {
+        "name": "Cute Girls Doing Cute Things",
+        "rank": 60
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 60
+      },
+      {
+        "name": "School",
+        "rank": 60
+      },
+      {
+        "name": "Monster Girl",
+        "rank": 60
+      },
+      {
+        "name": "Female Protagonist",
+        "rank": 60
+      },
+      {
+        "name": "Family Life",
+        "rank": 50
+      },
+      {
+        "name": "Iyashikei",
+        "rank": 30
+      }
+    ],
+    "startDate": {
+      "year": 2020
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 5858,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Masaoki Shindou",
+              "native": "眞藤雅興"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 150440,
+    "title": {
+      "romaji": "Ruri Dragon",
+      "english": "RuriDragon",
+      "native": "ルリドラゴン"
+    },
+    "synonyms": [
+      "瑠璃龍龍 ",
+      "รูริดราก้อน",
+      "루리 드래곤"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Monster Girl",
+        "rank": 94
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 92
+      },
+      {
+        "name": "Female Protagonist",
+        "rank": 91
+      },
+      {
+        "name": "Iyashikei",
+        "rank": 90
+      },
+      {
+        "name": "School",
+        "rank": 90
+      },
+      {
+        "name": "Dragons",
+        "rank": 90
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 81
+      },
+      {
+        "name": "Cute Girls Doing Cute Things",
+        "rank": 78
+      },
+      {
+        "name": "Primarily Teen Cast",
+        "rank": 78
+      },
+      {
+        "name": "Shounen",
+        "rank": 78
+      },
+      {
+        "name": "Primarily Female Cast",
+        "rank": 73
+      },
+      {
+        "name": "Super Power",
+        "rank": 73
+      },
+      {
+        "name": "Family Life",
+        "rank": 65
+      },
+      {
+        "name": "Slapstick",
+        "rank": 58
+      }
+    ],
+    "startDate": {
+      "year": 2022
+    },
+    "format": "MANGA",
+    "chapters": null,
+    "popularity": 34990,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Masaoki Shindou",
+              "native": "眞藤雅興"
+            }
+          }
+        },
+        {
+          "role": "Translator (English)",
+          "node": {
+            "name": {
+              "full": "Caleb Cook",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Lettering (English, chs 1-2)",
+          "node": {
+            "name": {
+              "full": "Sara Linsley",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Lettering (English, chs 3-)",
+          "node": {
+            "name": {
+              "full": "Kyla Aiko",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Chinese)",
+          "node": {
+            "name": {
+              "full": "Mengfang Cai",
+              "native": "蔡夢芳"
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish)",
+          "node": {
+            "name": {
+              "full": "Agata Marczyk",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Aya Nakamura",
+              "native": "中村亜也"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

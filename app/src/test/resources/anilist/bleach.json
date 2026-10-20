@@ -1,0 +1,923 @@
+[
+  {
+    "id": 30012,
+    "title": {
+      "romaji": "BLEACH",
+      "english": "Bleach",
+      "native": "BLEACH"
+    },
+    "synonyms": [
+      "ブリーチ",
+      "بلیچ",
+      "死神",
+      "BLEACH 블리치",
+      "境·界死神（）"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 97
+      },
+      {
+        "name": "Swordplay",
+        "rank": 92
+      },
+      {
+        "name": "Super Power",
+        "rank": 87
+      },
+      {
+        "name": "Ghost",
+        "rank": 85
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 85
+      },
+      {
+        "name": "War",
+        "rank": 85
+      },
+      {
+        "name": "Ensemble Cast",
+        "rank": 83
+      },
+      {
+        "name": "Afterlife",
+        "rank": 83
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 76
+      },
+      {
+        "name": "Conspiracy",
+        "rank": 74
+      },
+      {
+        "name": "Tragedy",
+        "rank": 73
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 71
+      },
+      {
+        "name": "Large Breasts",
+        "rank": 71
+      },
+      {
+        "name": "Primarily Teen Cast",
+        "rank": 70
+      },
+      {
+        "name": "Exorcism",
+        "rank": 70
+      },
+      {
+        "name": "Philosophy",
+        "rank": 66
+      },
+      {
+        "name": "Henshin",
+        "rank": 64
+      },
+      {
+        "name": "Gore",
+        "rank": 60
+      },
+      {
+        "name": "Gods",
+        "rank": 60
+      },
+      {
+        "name": "Heterosexual",
+        "rank": 57
+      },
+      {
+        "name": "Anachronism",
+        "rank": 55
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 55
+      },
+      {
+        "name": "Body Horror",
+        "rank": 52
+      },
+      {
+        "name": "Time Skip",
+        "rank": 52
+      },
+      {
+        "name": "Delinquents",
+        "rank": 50
+      },
+      {
+        "name": "Tsundere",
+        "rank": 40
+      },
+      {
+        "name": "Zombie",
+        "rank": 40
+      },
+      {
+        "name": "Archery",
+        "rank": 40
+      },
+      {
+        "name": "Transgender",
+        "rank": 32
+      },
+      {
+        "name": "Marriage",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2001
+    },
+    "format": "MANGA",
+    "chapters": 706,
+    "popularity": 122474,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Shou Aimoto",
+              "native": "藍本松"
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese: vols 1-24)",
+          "node": {
+            "name": {
+              "full": "Ricardo Cruz",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kentarou Kurimoto",
+              "native": "栗元健太郎"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Hitoshi Imoto",
+              "native": "井本仁"
+            }
+          }
+        },
+        {
+          "role": "Editor",
+          "node": {
+            "name": {
+              "full": "Hiroyuki Nakano",
+              "native": "中野博之"
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Marc Bernabé",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English)",
+          "node": {
+            "name": {
+              "full": "Joe Yamazaki",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vol 49)",
+          "node": {
+            "name": {
+              "full": "Christine Dashiell",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish)",
+          "node": {
+            "name": {
+              "full": "Paweł Dybała",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese: vols 25-52, 71-74)",
+          "node": {
+            "name": {
+              "full": "Drik Sada",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English: vols 16, 20)",
+          "node": {
+            "name": {
+              "full": "Mark McMurray",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Lettering (English: vols: 16, 17, 19, 20, 22, 23, 24)",
+          "node": {
+            "name": {
+              "full": "Mark McMurray",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Marta Gallego",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Italian)",
+          "node": {
+            "name": {
+              "full": "Simona Stanzani",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English: vols 3, 5, 6, 7, 8)",
+          "node": {
+            "name": {
+              "full": "Dave Lanphear",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English)",
+          "node": {
+            "name": {
+              "full": "Andy Ristaino",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English: vol 21)",
+          "node": {
+            "name": {
+              "full": "Evan Waldinger",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Rafael Morata",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Daniel Büchner",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Verónica Calafell",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French)",
+          "node": {
+            "name": {
+              "full": "Anne-Sophie Thevenon",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Shou Shiromoto",
+              "native": "城本祥"
+            }
+          }
+        },
+        {
+          "role": "Editor",
+          "node": {
+            "name": {
+              "full": "Atsushi Nakazaki",
+              "native": "中崎敦"
+            }
+          }
+        },
+        {
+          "role": "Translator (Turkish: vols 1-17)",
+          "node": {
+            "name": {
+              "full": "Tayfun Nitahara Haksöyliyen",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 41330,
+    "title": {
+      "romaji": "Bleach Short Story Edition",
+      "english": null,
+      "native": "BLEACH"
+    },
+    "synonyms": [
+      "Bleach Official Character Book SoulS",
+      "Bleach 0",
+      "Bleach Pilot"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Male Protagonist",
+        "rank": 79
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 79
+      },
+      {
+        "name": "Afterlife",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "Ghost",
+        "rank": 60
+      },
+      {
+        "name": "Swordplay",
+        "rank": 60
+      },
+      {
+        "name": "Super Power",
+        "rank": 20
+      },
+      {
+        "name": "School",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2006
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 2583,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 56133,
+    "title": {
+      "romaji": "not be, but be",
+      "english": null,
+      "native": "not be, but be"
+    },
+    "synonyms": [
+      "BLEACH UNMASKED",
+      "Bleach: UNMASKED"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Psychological",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Philosophy",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 50
+      }
+    ],
+    "startDate": {
+      "year": 2011
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 2406,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Makoto Matsubara",
+              "native": "松原真琴"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 60541,
+    "title": {
+      "romaji": "Bleach 4-koma: Komaburi",
+      "english": null,
+      "native": "BLEACH4コマ コマブリ"
+    },
+    "synonyms": [
+      "Koma-Bleach"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 50
+      }
+    ],
+    "startDate": {
+      "year": 2011
+    },
+    "format": "MANGA",
+    "chapters": 18,
+    "popularity": 484,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Atsushi Ooba",
+              "native": "おおばあつし"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 104300,
+    "title": {
+      "romaji": "Tsurezure Nichijou Ekotoba Colourful Bleach",
+      "english": "Color Bleach+: The Bleach Official Bootleg",
+      "native": "徒然日常絵詞 カラフル ブリーチ"
+    },
+    "synonyms": [
+      "Tedious Everyday Tales Colorful Bleach"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2004
+    },
+    "format": "MANGA",
+    "chapters": 37,
+    "popularity": 1213,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 137620,
+    "title": {
+      "romaji": "BLEACH Gokumeimeihen",
+      "english": "Bleach: Special One-Shot",
+      "native": "BLEACH 獄頤鳴鳴篇"
+    },
+    "synonyms": [
+      "BLEACH: NO BREATHS FROM HELL"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 96
+      },
+      {
+        "name": "Afterlife",
+        "rank": 96
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 84
+      },
+      {
+        "name": "Ghost",
+        "rank": 60
+      },
+      {
+        "name": "Mythology",
+        "rank": 40
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 20
+      },
+      {
+        "name": "Primarily Adult Cast",
+        "rank": 20
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2021
+    },
+    "format": "ONE_SHOT",
+    "chapters": 1,
+    "popularity": 12839,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 141703,
+    "title": {
+      "romaji": "BLEACH: Jigoku-hen",
+      "english": null,
+      "native": "BLEACH 地獄篇"
+    },
+    "synonyms": [
+      "Bleach the Movie: Hell Verse"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "Afterlife",
+        "rank": 20
+      },
+      {
+        "name": "Super Power",
+        "rank": 20
+      },
+      {
+        "name": "Swordplay",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2010
+    },
+    "format": "NOVEL",
+    "chapters": null,
+    "popularity": 257,
+    "staff": {
+      "edges": [
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Script",
+          "node": {
+            "name": {
+              "full": "Natsuko Takahashi",
+              "native": "高橋ナツコ"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Makoto Matsubara",
+              "native": "松原真琴"
+            }
+          }
+        },
+        {
+          "role": "Script",
+          "node": {
+            "name": {
+              "full": "Masahiro Ookubo",
+              "native": "大久保昌弘"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 141700,
+    "title": {
+      "romaji": "BLEACH: MEMORIES OF NOBODY",
+      "english": null,
+      "native": "BLEACH: MEMORIES OF NOBODY"
+    },
+    "synonyms": [
+      "Bleach the Movie: Memories of Nobody"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Mystery",
+      "Supernatural"
+    ],
+    "tags": [
+      {
+        "name": "Shounen",
+        "rank": 60
+      },
+      {
+        "name": "Super Power",
+        "rank": 20
+      },
+      {
+        "name": "Afterlife",
+        "rank": 20
+      },
+      {
+        "name": "Swordplay",
+        "rank": 20
+      }
+    ],
+    "startDate": {
+      "year": 2006
+    },
+    "format": "NOVEL",
+    "chapters": null,
+    "popularity": 319,
+    "staff": {
+      "edges": [
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Script",
+          "node": {
+            "name": {
+              "full": "Masashi Sogo",
+              "native": "十川誠志"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Makoto Matsubara",
+              "native": "松原真琴"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 210289,
+    "title": {
+      "romaji": "DON’T BLEACH MY FIST",
+      "english": null,
+      "native": "DON’T BLEACH MY FIST"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "tags": [],
+    "startDate": {
+      "year": 2026
+    },
+    "format": "NOVEL",
+    "chapters": null,
+    "popularity": 161,
+    "staff": {
+      "edges": [
+        {
+          "role": "Illustration",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Original Creator",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Ryougo Narita",
+              "native": "成田良悟"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 52745,
+    "title": {
+      "romaji": "Bleach: The Honey Dish Rhapsody",
+      "english": null,
+      "native": "BLEACH the Honey Dish Rhapsody"
+    },
+    "synonyms": [],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "tags": [
+      {
+        "name": "Food",
+        "rank": 79
+      },
+      {
+        "name": "Shounen",
+        "rank": 60
+      }
+    ],
+    "startDate": {
+      "year": 2006
+    },
+    "format": "NOVEL",
+    "chapters": 3,
+    "popularity": 804,
+    "staff": {
+      "edges": [
+        {
+          "role": "Story & Illustration",
+          "node": {
+            "name": {
+              "full": "Tite Kubo",
+              "native": "久保帯人"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Makoto Matsubara",
+              "native": "松原真琴"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
