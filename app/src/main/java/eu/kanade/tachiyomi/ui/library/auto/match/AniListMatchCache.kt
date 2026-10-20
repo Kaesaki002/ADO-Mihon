@@ -12,7 +12,7 @@ import java.nio.file.AtomicMoveNotSupportedException
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 
-const val ANILIST_CACHE_VERSION = 1
+const val ANILIST_CACHE_VERSION = 2
 
 @Serializable
 data class AniListMetadataCacheEntry(

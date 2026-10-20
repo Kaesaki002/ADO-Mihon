@@ -31,6 +31,8 @@ data class AniListMediaCandidate(
 data class AniListTag(
     val name: String,
     val rank: Int,
+    val isGeneralSpoiler: Boolean = false,
+    val isMediaSpoiler: Boolean = false,
 )
 
 // ==========================================
@@ -72,7 +74,14 @@ data class AniListMediaDto(
             tags = tags.mapNotNull {
                 val n = it.name
                 val r = it.rank
-                if (n != null && r != null) AniListTag(n, r) else null
+                if (n != null && r != null) {
+                    AniListTag(
+                        name = n,
+                        rank = r,
+                        isGeneralSpoiler = it.isGeneralSpoiler ?: false,
+                        isMediaSpoiler = it.isMediaSpoiler ?: false,
+                    )
+                } else null
             },
             staffNames = staffList,
         )
@@ -90,6 +99,8 @@ data class AniListTitleDto(
 data class AniListTagDto(
     val name: String? = null,
     val rank: Int? = null,
+    val isGeneralSpoiler: Boolean? = null,
+    val isMediaSpoiler: Boolean? = null,
 )
 
 @Serializable

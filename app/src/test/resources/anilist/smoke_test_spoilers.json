@@ -1,0 +1,616 @@
+[
+  {
+    "id": 30021,
+    "title": {
+      "romaji": "DEATH NOTE",
+      "english": "Death Note",
+      "native": "DEATH NOTE"
+    },
+    "synonyms": [
+      "デスノート",
+      "Ölüm Defteri",
+      "Death Note - Zápisník smrti",
+      "Beležnica smrti",
+      "Τετράδιο θανάτου",
+      "Death Note: Тетрадка на смъртта",
+      "死亡筆記本",
+      "데스노트"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Psychological",
+      "Supernatural",
+      "Thriller"
+    ],
+    "tags": [
+      {
+        "name": "Detective",
+        "rank": 96,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Police",
+        "rank": 94,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Anti-Hero",
+        "rank": 93,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Urban Fantasy",
+        "rank": 92,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Tragedy",
+        "rank": 92,
+        "isGeneralSpoiler": true,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Crime",
+        "rank": 91,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 85,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Philosophy",
+        "rank": 79,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Gods",
+        "rank": 77,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 76,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Espionage",
+        "rank": 73,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Time Skip",
+        "rank": 67,
+        "isGeneralSpoiler": true,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Memory Manipulation",
+        "rank": 66,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Shounen",
+        "rank": 66,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Demons",
+        "rank": 49,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Amnesia",
+        "rank": 48,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Politics",
+        "rank": 46,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Cult",
+        "rank": 20,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      }
+    ],
+    "format": "MANGA",
+    "staff": {
+      "edges": [
+        {
+          "role": "Art",
+          "node": {
+            "name": {
+              "full": "Takeshi Obata",
+              "native": "小畑健"
+            }
+          }
+        },
+        {
+          "role": "Story",
+          "node": {
+            "name": {
+              "full": "Tsugumi Ooba",
+              "native": "大場つぐみ"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kahiro Kyouda",
+              "native": "京田果大"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Ryou Ogawa",
+              "native": "小川亮"
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (English)",
+          "node": {
+            "name": {
+              "full": "Gia Cam Luc",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 4-7)",
+          "node": {
+            "name": {
+              "full": "Alexis Kirsch",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Spanish)",
+          "node": {
+            "name": {
+              "full": "Marc Bernabé",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Touch-up Art & Lettering (French)",
+          "node": {
+            "name": {
+              "full": "Éric Montésinos",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 8-12)",
+          "node": {
+            "name": {
+              "full": "Tetsuichiro Miyaki",
+              "native": "みやきてついちろ"
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Kay Hermann",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French: vols 1-7)",
+          "node": {
+            "name": {
+              "full": "Myloo Anhmet",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Polish)",
+          "node": {
+            "name": {
+              "full": "Paweł Dybała",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (English: vols 1-3)",
+          "node": {
+            "name": {
+              "full": "Pookie Rolf",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Italian)",
+          "node": {
+            "name": {
+              "full": "Giacomo Calorio",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (French: vols 8-12)",
+          "node": {
+            "name": {
+              "full": "Shinya Seto",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing",
+          "node": {
+            "name": {
+              "full": "Kouji Yoshida",
+              "native": "吉田幸司"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Tatsunosuke Sonoda",
+              "native": "園田辰之助"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Kazushi Hinoki",
+              "native": "ひのき一志"
+            }
+          }
+        },
+        {
+          "role": "Translator (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Rica Sakata",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Nobuhiro Satou",
+              "native": "佐藤伸洋"
+            }
+          }
+        },
+        {
+          "role": "Translator (Turkish)",
+          "node": {
+            "name": {
+              "full": "Hüseyin Erkin",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Translator (Swedish)",
+          "node": {
+            "name": {
+              "full": "Kami Anani",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (Portuguese) ",
+          "node": {
+            "name": {
+              "full": "Cassius Medaur",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (Portuguese)",
+          "node": {
+            "name": {
+              "full": "Marcelo Del Greco",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Editing (English)",
+          "node": {
+            "name": {
+              "full": "Maria Diaz",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": 135083,
+    "title": {
+      "romaji": "WIND BREAKER",
+      "english": "WIND BREAKER",
+      "native": "WIND BREAKER"
+    },
+    "synonyms": [
+      "ウィンドブレイカ",
+      "วินด์เบรกเกอร์",
+      "WIND BREAKER—防風少年—"
+    ],
+    "countryOfOrigin": "JP",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Drama"
+    ],
+    "tags": [
+      {
+        "name": "Delinquents",
+        "rank": 93,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Male Protagonist",
+        "rank": 92,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Found Family",
+        "rank": 83,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Primarily Male Cast",
+        "rank": 83,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Shounen",
+        "rank": 81,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Gangs",
+        "rank": 80,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Martial Arts",
+        "rank": 79,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Urban",
+        "rank": 79,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Ensemble Cast",
+        "rank": 79,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Coming of Age",
+        "rank": 79,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Tsundere",
+        "rank": 73,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "LGBTQ+ Themes",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Bullying",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Primarily Teen Cast",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Criminal Organization",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Crime",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "School",
+        "rank": 60,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Crossdressing",
+        "rank": 56,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Transgender",
+        "rank": 42,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Heterosexual",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Bar",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Restaurant",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Rescue",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Work",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Twins",
+        "rank": 40,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Cute Boys Doing Cute Things",
+        "rank": 33,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      },
+      {
+        "name": "Tragedy",
+        "rank": 33,
+        "isGeneralSpoiler": true,
+        "isMediaSpoiler": true
+      },
+      {
+        "name": "Iyashikei",
+        "rank": 26,
+        "isGeneralSpoiler": false,
+        "isMediaSpoiler": false
+      }
+    ],
+    "format": "MANGA",
+    "staff": {
+      "edges": [
+        {
+          "role": "Translator (English)",
+          "node": {
+            "name": {
+              "full": "Jacqueline Fung",
+              "native": null
+            }
+          }
+        },
+        {
+          "role": "Story & Art",
+          "node": {
+            "name": {
+              "full": "Satoru Nii",
+              "native": "にいさとる"
+            }
+          }
+        },
+        {
+          "role": "Editor",
+          "node": {
+            "name": {
+              "full": "Yuuta Hiraoka",
+              "native": "平岡雄大"
+            }
+          }
+        },
+        {
+          "role": "Translator (Chinese)",
+          "node": {
+            "name": {
+              "full": "Ziling Guo",
+              "native": "郭子菱"
+            }
+          }
+        },
+        {
+          "role": "Assistant",
+          "node": {
+            "name": {
+              "full": "Tetsuya Okuyama",
+              "native": "奧山哲矢"
+            }
+          }
+        },
+        {
+          "role": "Translator (German)",
+          "node": {
+            "name": {
+              "full": "Jan-Christoph Müller",
+              "native": null
+            }
+          }
+        }
+      ]
+    }
+  }
+]

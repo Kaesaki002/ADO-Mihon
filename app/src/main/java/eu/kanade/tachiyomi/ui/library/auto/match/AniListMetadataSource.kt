@@ -34,34 +34,66 @@ class AniListHttpMetadataSource(
 
     private val jsonMediaType = "application/json; charset=utf-8".toMediaType()
 
-    override suspend fun searchByTitle(title: String): List<AniListMediaCandidate> = withContext(Dispatchers.IO) {
-        val query = """
-            query (${'$'}search: String) {
-              Page(page: 1, perPage: 10) {
-                media(search: ${'$'}search, type: MANGA) {
-                  id
-                  title { romaji english native }
-                  synonyms
-                  countryOfOrigin
-                  genres
-                  tags { name rank }
-                  format
-                  staff {
-                    edges {
-                      role
-                      node { name { full native } }
-                    }
-                  }
-                }
-              }
-            }
-        """.trimIndent()
+    companion object {
+        const val SEARCH_QUERY = """
+query (${'$'}search: String) {
+  Page(page: 1, perPage: 10) {
+    media(search: ${'$'}search, type: MANGA) {
+      id
+      title { romaji english native }
+      synonyms
+      countryOfOrigin
+      genres
+      tags {
+        name
+        rank
+        isGeneralSpoiler
+        isMediaSpoiler
+      }
+      format
+      staff {
+        edges {
+          role
+          node { name { full native } }
+        }
+      }
+    }
+  }
+}"""
 
+        const val GET_BY_IDS_QUERY = """
+query (${'$'}ids: [Int], ${'$'}perPage: Int) {
+  Page(page: 1, perPage: ${'$'}perPage) {
+    media(id_in: ${'$'}ids, type: MANGA) {
+      id
+      title { romaji english native }
+      synonyms
+      countryOfOrigin
+      genres
+      tags {
+        name
+        rank
+        isGeneralSpoiler
+        isMediaSpoiler
+      }
+      format
+      staff {
+        edges {
+          role
+          node { name { full native } }
+        }
+      }
+    }
+  }
+}"""
+    }
+
+    override suspend fun searchByTitle(title: String): List<AniListMediaCandidate> = withContext(Dispatchers.IO) {
         val variables = buildJsonObject {
             put("search", title.trim())
         }
 
-        executeGraphQL(query, variables)
+        executeGraphQL(SEARCH_QUERY, variables)
     }
 
     override suspend fun getByIds(ids: List<Long>): Map<Long, AniListMediaCandidate> = withContext(Dispatchers.IO) {
@@ -71,28 +103,6 @@ class AniListHttpMetadataSource(
 
         // Sayfa başına en fazla 50 ID gruplaması
         for (chunk in ids.distinct().chunked(50)) {
-            val query = """
-                query (${'$'}ids: [Int], ${'$'}perPage: Int) {
-                  Page(page: 1, perPage: ${'$'}perPage) {
-                    media(id_in: ${'$'}ids, type: MANGA) {
-                      id
-                      title { romaji english native }
-                      synonyms
-                      countryOfOrigin
-                      genres
-                      tags { name rank }
-                      format
-                      staff {
-                        edges {
-                          role
-                          node { name { full native } }
-                        }
-                      }
-                    }
-                  }
-                }
-            """.trimIndent()
-
             val variables = buildJsonObject {
                 putJsonArray("ids") {
                     for (id in chunk) add(kotlinx.serialization.json.JsonPrimitive(id.toInt()))
@@ -100,7 +110,7 @@ class AniListHttpMetadataSource(
                 put("perPage", chunk.size)
             }
 
-            val candidates = executeGraphQL(query, variables)
+            val candidates = executeGraphQL(GET_BY_IDS_QUERY, variables)
             for (cand in candidates) {
                 results[cand.id] = cand
             }

@@ -201,6 +201,47 @@ class AniListResolverTest {
         fakeSource.searchCalls shouldHaveSize 1
     }
 
+    @Test
+    fun `eski semali metadata dosyasi yok sayilip agdan yeniden cekilir`() = runTest {
+        val metadataDir = File(tempDir, "metadata")
+        metadataDir.mkdirs()
+        val oldMetadataFile = File(metadataDir, "30021.json")
+        // Eski sürüm (version = 1) olan bir metadata dosyası yaz
+        oldMetadataFile.writeText("""
+            {
+                "version": 1,
+                "candidate": {
+                    "id": 30021,
+                    "titleRomaji": "Death Note",
+                    "genres": ["Mystery"],
+                    "tags": [{"name": "Tragedy", "rank": 92}]
+                },
+                "timestamp": $currentTime
+            }
+        """.trimIndent())
+
+        // Cache üzerinden okunduğunda version uyumsuzluğu (ANILIST_CACHE_VERSION = 2) nedeniyle null dönmeli ve dosya silinmeli
+        cache.getMetadata(30021L).shouldBeNull()
+        oldMetadataFile.exists() shouldBe false
+
+        // Resolver akışında taze metadata kaynağından çekilir
+        val freshCandidate = sampleCandidate(id = 30021L, title = "Death Note")
+        fakeSource.idMapToReturn[30021L] = freshCandidate
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note", anilistTrackerId = 30021L)
+        val result = resolver.resolve(input)
+
+        result.status shouldBe MatchStatus.MATCHED
+        result.candidate.shouldNotBeNull()
+        result.candidate.id shouldBe 30021L
+        fakeSource.getByIdsCalls shouldHaveSize 1
+
+        // Yeniden kaydedilen dosya yeni sürüm (ANILIST_CACHE_VERSION = 2) olmalıdır
+        val saved = cache.getMetadata(30021L)
+        saved.shouldNotBeNull()
+        saved.id shouldBe 30021L
+    }
+
     // ========================================================
     // 4. Tracker Kısayolu ve Tracker Önceliği
     // ========================================================
