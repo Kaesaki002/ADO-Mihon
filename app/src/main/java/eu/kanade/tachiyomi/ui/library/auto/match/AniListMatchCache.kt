@@ -17,7 +17,7 @@ const val ANILIST_CACHE_VERSION = 2
 @Serializable
 data class AniListMetadataCacheEntry(
     val version: Int,
-    val candidate: AniListMediaCandidate,
+    val candidate: AniListMediaCandidate? = null,
     val timestamp: Long,
 )
 
@@ -63,10 +63,23 @@ class AniListMatchCache(
                 val jsonText = file.readText(Charsets.UTF_8)
                 val entry = AniListJsonParser.decodeFromString<AniListMetadataCacheEntry>(jsonText)
 
-                val ninetyDaysMs = 90L * 24 * 60 * 60 * 1000
-                val now = clock()
+                if (entry.version != ANILIST_CACHE_VERSION) {
+                    file.delete()
+                    return@withLock null
+                }
 
-                if (entry.version != ANILIST_CACHE_VERSION || (now - entry.timestamp) > ninetyDaysMs) {
+                val now = clock()
+                if (entry.candidate == null) {
+                    // 30 günlük negatif kayıt
+                    val thirtyDaysMs = 30L * 24 * 60 * 60 * 1000
+                    if ((now - entry.timestamp) > thirtyDaysMs) {
+                        file.delete()
+                    }
+                    return@withLock null
+                }
+
+                val ninetyDaysMs = 90L * 24 * 60 * 60 * 1000
+                if ((now - entry.timestamp) > ninetyDaysMs) {
                     file.delete()
                     return@withLock null
                 }
@@ -78,6 +91,90 @@ class AniListMatchCache(
                 file.delete()
                 null
             }
+        }
+    }
+
+    suspend fun isCachedOrNegativelyCached(anilistId: Long): Boolean = withContext(Dispatchers.IO) {
+        val file = File(metadataDir, "$anilistId.json")
+        if (!file.exists()) return@withContext false
+
+        mutex.withLock {
+            try {
+                val jsonText = file.readText(Charsets.UTF_8)
+                val entry = AniListJsonParser.decodeFromString<AniListMetadataCacheEntry>(jsonText)
+
+                if (entry.version != ANILIST_CACHE_VERSION) {
+                    file.delete()
+                    return@withLock false
+                }
+
+                val now = clock()
+                if (entry.candidate == null) {
+                    val thirtyDaysMs = 30L * 24 * 60 * 60 * 1000
+                    if ((now - entry.timestamp) > thirtyDaysMs) {
+                        file.delete()
+                        return@withLock false
+                    }
+                    return@withLock true
+                } else {
+                    val ninetyDaysMs = 90L * 24 * 60 * 60 * 1000
+                    if ((now - entry.timestamp) > ninetyDaysMs) {
+                        file.delete()
+                        return@withLock false
+                    }
+                    return@withLock true
+                }
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                file.delete()
+                false
+            }
+        }
+    }
+
+    suspend fun isNegativeMetadataCache(anilistId: Long): Boolean = withContext(Dispatchers.IO) {
+        val file = File(metadataDir, "$anilistId.json")
+        if (!file.exists()) return@withContext false
+
+        mutex.withLock {
+            try {
+                val jsonText = file.readText(Charsets.UTF_8)
+                val entry = AniListJsonParser.decodeFromString<AniListMetadataCacheEntry>(jsonText)
+
+                if (entry.version != ANILIST_CACHE_VERSION) {
+                    file.delete()
+                    return@withLock false
+                }
+
+                val now = clock()
+                if (entry.candidate == null) {
+                    val thirtyDaysMs = 30L * 24 * 60 * 60 * 1000
+                    if ((now - entry.timestamp) > thirtyDaysMs) {
+                        file.delete()
+                        return@withLock false
+                    }
+                    return@withLock true
+                }
+                false
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                file.delete()
+                false
+            }
+        }
+    }
+
+    suspend fun saveNotFoundMetadata(anilistId: Long) = withContext(Dispatchers.IO) {
+        val file = File(metadataDir, "$anilistId.json")
+        val entry = AniListMetadataCacheEntry(
+            version = ANILIST_CACHE_VERSION,
+            candidate = null,
+            timestamp = clock(),
+        )
+        val jsonText = AniListJsonParser.encodeToString(entry)
+
+        mutex.withLock {
+            writeAtomic(file, jsonText)
         }
     }
 
@@ -162,21 +259,42 @@ class AniListMatchCache(
         anilistId: Long?,
     ) = withContext(Dispatchers.IO) {
         val file = File(matchesDir, "$mangaId.json")
-        val entry = MangaMatchCacheEntry(
-            version = ANILIST_CACHE_VERSION,
-            mangaId = mangaId,
-            normalizedTitle = StringSimilarity.normalizeTitle(title),
-            normalizedAuthors = normalizeAuthorsForCache(authors),
-            trackerRemoteId = trackerRemoteId,
-            status = status,
-            reason = reason,
-            score = score,
-            anilistId = anilistId,
-            timestamp = clock(),
-        )
-        val jsonText = AniListJsonParser.encodeToString(entry)
+        val normTitle = StringSimilarity.normalizeTitle(title)
+        val normAuthors = normalizeAuthorsForCache(authors)
 
         mutex.withLock {
+            // Yalnızca kayıt yoksa ya da içeriği (status, reason, anilistId vb.) değişmişse diske yaz
+            if (file.exists()) {
+                try {
+                    val existing = AniListJsonParser.decodeFromString<MangaMatchCacheEntry>(file.readText(Charsets.UTF_8))
+                    if (existing.version == ANILIST_CACHE_VERSION &&
+                        existing.status == status &&
+                        existing.reason == reason &&
+                        existing.anilistId == anilistId &&
+                        existing.trackerRemoteId == trackerRemoteId &&
+                        existing.normalizedTitle == normTitle &&
+                        existing.normalizedAuthors == normAuthors
+                    ) {
+                        return@withLock
+                    }
+                } catch (e: Exception) {
+                    if (e is CancellationException) throw e
+                }
+            }
+
+            val entry = MangaMatchCacheEntry(
+                version = ANILIST_CACHE_VERSION,
+                mangaId = mangaId,
+                normalizedTitle = normTitle,
+                normalizedAuthors = normAuthors,
+                trackerRemoteId = trackerRemoteId,
+                status = status,
+                reason = reason,
+                score = score,
+                anilistId = anilistId,
+                timestamp = clock(),
+            )
+            val jsonText = AniListJsonParser.encodeToString(entry)
             writeAtomic(file, jsonText)
         }
     }

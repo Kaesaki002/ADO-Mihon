@@ -38,37 +38,139 @@ class AniListResolver(
     private val matchCache: AniListMatchCache,
 ) {
     /**
+     * Verilen ID listesinden henüz önbellekte (metadata veya negatif kayıt) bulunmayanları
+     * 50'şerli getByIds çağrıları ile çeker ve saveMetadata ile kaydeder.
+     * Döndürülmeyen ID'ler için 30 günlük negatif kayıt tutar ve sonraki prefetch'te yeniden sorgulamaz.
+     * Ağ hatasında diske hiçbir şey yazmaz ve hatayı yukarı fırlatır.
+     */
+    suspend fun prefetchByIds(ids: List<Long>) {
+        val distinctIds = ids.filter { it > 0 }.distinct()
+        if (distinctIds.isEmpty()) return
+
+        // 1. Önbellekte (ne metadata ne de negatif kayıt olarak) bulunmayan ID'leri belirle
+        val missingIds = mutableListOf<Long>()
+        for (id in distinctIds) {
+            if (!matchCache.isCachedOrNegativelyCached(id)) {
+                missingIds.add(id)
+            }
+        }
+
+        if (missingIds.isEmpty()) return
+
+        // 2. 50'şerli gruplar halinde çek
+        val allFetched = mutableMapOf<Long, AniListMediaCandidate>()
+        for (chunk in missingIds.chunked(50)) {
+            val fetched = try {
+                metadataSource.getByIds(chunk)
+            } catch (e: Exception) {
+                if (e is CancellationException) throw e
+                throw e // Ağ hatasında hiçbir şey yazma
+            }
+            allFetched.putAll(fetched)
+        }
+
+        for (id in missingIds) {
+            val candidate = allFetched[id]
+            if (candidate != null) {
+                matchCache.saveMetadata(candidate)
+            } else {
+                matchCache.saveNotFoundMetadata(id)
+            }
+        }
+    }
+
+    /**
      * Mangayı sırasıyla tracker, önbellek ve başlık araması ile çözümler.
      * Ağ hataları veya CancellationException önbelleğe asla yazılmaz.
      */
     suspend fun resolve(input: ResolverMangaInput): ResolverResult {
         // ========================================================
         // 1. Tracker Kontrolü (tracker_id = 2 ise doğrudan kullan)
+        // Sıra: getMatch -> getMetadata -> ağ
         // ========================================================
         if (input.anilistTrackerId != null && input.anilistTrackerId > 0) {
+            val trackerId = input.anilistTrackerId
+
+            // 1.1 getMatch kontrolü: geçerli (süresi dolmamış) bir NOT_MATCHED ya da MATCHED kaydı varsa ağa gitmeden dön
             val cachedMatch = matchCache.getMatch(
                 mangaId = input.mangaId,
                 currentTitle = input.title,
                 currentAuthors = input.authors,
-                currentTrackerRemoteId = input.anilistTrackerId,
+                currentTrackerRemoteId = trackerId,
             )
 
-            if (cachedMatch != null && cachedMatch.status == MatchStatus.MATCHED && cachedMatch.anilistId == input.anilistTrackerId) {
-                val cachedMeta = matchCache.getMetadata(input.anilistTrackerId)
-                if (cachedMeta != null) {
-                    return ResolverResult(
-                        candidate = cachedMeta,
-                        status = MatchStatus.MATCHED,
-                        reason = cachedMatch.reason,
-                        isFromCache = true,
-                    )
+            if (cachedMatch != null) {
+                when (cachedMatch.status) {
+                    MatchStatus.NOT_MATCHED -> {
+                        return ResolverResult(
+                            candidate = null,
+                            status = MatchStatus.NOT_MATCHED,
+                            reason = cachedMatch.reason,
+                            isFromCache = true,
+                        )
+                    }
+                    MatchStatus.MATCHED -> {
+                        val cachedMeta = matchCache.getMetadata(trackerId)
+                        if (cachedMeta != null) {
+                            return ResolverResult(
+                                candidate = cachedMeta,
+                                status = MatchStatus.MATCHED,
+                                reason = cachedMatch.reason,
+                                isFromCache = true,
+                            )
+                        }
+                    }
+                    MatchStatus.AMBIGUOUS -> {
+                        // Eski AMBIGUOUS ezilmek üzere devam eder
+                    }
                 }
             }
 
-            // Önbellekte yoksa doğrudan AniList ID'si ile çek (tahmin yok)
+            // 1.2 getMetadata kontrolü: eşleşme kaydı yoksa ama metadata önceden prefetch edildiyse
+            val cachedMeta = matchCache.getMetadata(trackerId)
+            if (cachedMeta != null) {
+                matchCache.saveMatch(
+                    mangaId = input.mangaId,
+                    title = input.title,
+                    authors = input.authors,
+                    trackerRemoteId = trackerId,
+                    status = MatchStatus.MATCHED,
+                    reason = MatchReason.TRACKER,
+                    score = 1.0,
+                    anilistId = trackerId,
+                )
+                return ResolverResult(
+                    candidate = cachedMeta,
+                    status = MatchStatus.MATCHED,
+                    reason = MatchReason.TRACKER,
+                    isFromCache = true,
+                )
+            }
+
+            // 1.3 Negatif metadata kontrolü: 30 gün içinde bulunamamışsa ağa gitme
+            if (matchCache.isNegativeMetadataCache(trackerId)) {
+                matchCache.saveMatch(
+                    mangaId = input.mangaId,
+                    title = input.title,
+                    authors = input.authors,
+                    trackerRemoteId = trackerId,
+                    status = MatchStatus.NOT_MATCHED,
+                    reason = MatchReason.TRACKER,
+                    score = 0.0,
+                    anilistId = null,
+                )
+                return ResolverResult(
+                    candidate = null,
+                    status = MatchStatus.NOT_MATCHED,
+                    reason = MatchReason.TRACKER,
+                    isFromCache = true,
+                )
+            }
+
+            // 1.4 Doğrudan AniList ID'si ile ağdan çek (tahmin yok)
             try {
-                val fetchedMap = metadataSource.getByIds(listOf(input.anilistTrackerId))
-                val candidate = fetchedMap[input.anilistTrackerId]
+                val fetchedMap = metadataSource.getByIds(listOf(trackerId))
+                val candidate = fetchedMap[trackerId]
 
                 if (candidate != null) {
                     matchCache.saveMetadata(candidate)
@@ -76,17 +178,37 @@ class AniListResolver(
                         mangaId = input.mangaId,
                         title = input.title,
                         authors = input.authors,
-                        trackerRemoteId = input.anilistTrackerId,
+                        trackerRemoteId = trackerId,
                         status = MatchStatus.MATCHED,
-                        reason = MatchReason.SCORE,
+                        reason = MatchReason.TRACKER,
                         score = 1.0,
-                        anilistId = input.anilistTrackerId,
+                        anilistId = trackerId,
                     )
 
                     return ResolverResult(
                         candidate = candidate,
                         status = MatchStatus.MATCHED,
-                        reason = MatchReason.SCORE,
+                        reason = MatchReason.TRACKER,
+                        isFromCache = false,
+                    )
+                } else {
+                    // Tracker ID için AniList kayıt döndürmezse başlık aramasına DÜŞME!
+                    // Sonuç kategorisiz (NOT_MATCHED) olsun ve kısa süreli (30 gün) saklansın
+                    matchCache.saveNotFoundMetadata(trackerId)
+                    matchCache.saveMatch(
+                        mangaId = input.mangaId,
+                        title = input.title,
+                        authors = input.authors,
+                        trackerRemoteId = trackerId,
+                        status = MatchStatus.NOT_MATCHED,
+                        reason = MatchReason.TRACKER,
+                        score = 0.0,
+                        anilistId = null,
+                    )
+                    return ResolverResult(
+                        candidate = null,
+                        status = MatchStatus.NOT_MATCHED,
+                        reason = MatchReason.TRACKER,
                         isFromCache = false,
                     )
                 }
@@ -170,17 +292,17 @@ class AniListResolver(
             throw e
         }
 
-        // Bulunan tüm adayların metadata'sını önbelleğe al
-        for (cand in candidates) {
-            matchCache.saveMetadata(cand)
-        }
-
         val matchInput = MatchInput(
             title = input.title,
             authors = input.authors,
             country = input.country,
         )
         val matchResult = AniListMatcher.match(matchInput, candidates)
+
+        // Aramada yalnızca eşleşen adayın metadata'sını önbelleğe al
+        if (matchResult.status == MatchStatus.MATCHED && matchResult.matchedCandidate != null) {
+            matchCache.saveMetadata(matchResult.matchedCandidate)
+        }
 
         // Eşleşme sonucunu önbelleğe yaz
         matchCache.saveMatch(

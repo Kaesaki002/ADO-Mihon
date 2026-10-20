@@ -17,6 +17,7 @@ enum class MatchReason {
     FORMAT,
     AUTHOR,
     COUNTRY,
+    TRACKER,
     NONE,
 }
 

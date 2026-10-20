@@ -484,6 +484,228 @@ class AniListResolverTest {
         attempts shouldBe 3
         delayCalls shouldBe 10_000L // 2 kez 5 saniye = 10.000 ms
     }
+
+    // ========================================================
+    // 8. Yeni Tracker, Prefetch ve Deduplication Testleri
+    // ========================================================
+
+    @Test
+    fun `prefetch 120 IDyi 3 cagride ceker ve ardindan resolve aga gitmez`() = runTest {
+        val ids = (1L..120L).toList()
+        for (i in ids) {
+            fakeSource.idMapToReturn[i] = sampleCandidate(id = i, title = "Manga $i")
+        }
+
+        resolver.prefetchByIds(ids)
+
+        // 120 ID 50'lik gruplarla 3 çağrıda çekilmiş olmalı: 50, 50, 20
+        fakeSource.getByIdsCalls shouldHaveSize 3
+        fakeSource.getByIdsCalls[0] shouldHaveSize 50
+        fakeSource.getByIdsCalls[1] shouldHaveSize 50
+        fakeSource.getByIdsCalls[2] shouldHaveSize 20
+
+        // Şimdi tracker ID ile resolve çağrıldığında ağa gitmemeli (önbellekten gelmeli)
+        val input = ResolverMangaInput(mangaId = 1L, title = "Manga 1", anilistTrackerId = 1L)
+        val result = resolver.resolve(input)
+
+        result.status shouldBe MatchStatus.MATCHED
+        result.reason shouldBe MatchReason.TRACKER
+        result.candidate.shouldNotBeNull()
+        result.candidate.id shouldBe 1L
+        result.isFromCache shouldBe true
+        fakeSource.getByIdsCalls shouldHaveSize 3 // Yeni getByIds çağrısı yapılmadı!
+        fakeSource.searchCalls shouldHaveSize 0 // searchByTitle yapılmadı!
+    }
+
+    @Test
+    fun `ikinci resolve cagrisi dosyayi yeniden yazmaz`() = runTest {
+        val candidate = sampleCandidate(id = 30021L, title = "Death Note")
+        fakeSource.candidatesToReturn = listOf(candidate)
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note")
+
+        // 1. İlk çağrı dosyayı yazar
+        val res1 = resolver.resolve(input)
+        res1.status shouldBe MatchStatus.MATCHED
+
+        val matchFile = File(tempDir, "matches/1.json")
+        matchFile.exists() shouldBe true
+
+        // Dosya zaman damgasını bilerek geriye çekiyoruz (10 saniye önceye)
+        val initialMod = matchFile.lastModified()
+        val pastMod = initialMod - 10_000L
+        matchFile.setLastModified(pastMod)
+        matchFile.lastModified() shouldBe pastMod
+
+        // 2. İkinci resolve çağrısı: İçerik değişmediği için saveMatch diske yazmamalıdır
+        val res2 = resolver.resolve(input)
+        res2.status shouldBe MatchStatus.MATCHED
+        res2.isFromCache shouldBe true
+
+        // Dosyanın değiştirilme tarihi değişmemiş olmalıdır
+        matchFile.lastModified() shouldBe pastMod
+    }
+
+    @Test
+    fun `tracker ID bulunamayinca arama yapilmaz ve NOT_MATCHED doner`() = runTest {
+        // fakeSource.idMapToReturn içinde 99999L yok (AniList boş döndürüyor)
+        val input = ResolverMangaInput(
+            mangaId = 1L,
+            title = "Unknown Manga",
+            anilistTrackerId = 99999L,
+        )
+
+        val result = resolver.resolve(input)
+        result.status shouldBe MatchStatus.NOT_MATCHED
+        result.reason shouldBe MatchReason.TRACKER
+        result.candidate.shouldBeNull()
+        result.isFromCache shouldBe false
+
+        fakeSource.getByIdsCalls shouldHaveSize 1
+        fakeSource.searchCalls shouldHaveSize 0 // Başlık aramasına ASLA düşülmedi
+
+        // Eşleşme ve negatif metadata önbelleğe kaydedilmiş olmalı
+        val matchEntry = cache.getMatch(
+            mangaId = 1L,
+            currentTitle = "Unknown Manga",
+            currentAuthors = emptyList(),
+            currentTrackerRemoteId = 99999L,
+        )
+        matchEntry.shouldNotBeNull()
+        matchEntry.status shouldBe MatchStatus.NOT_MATCHED
+        matchEntry.reason shouldBe MatchReason.TRACKER
+        cache.isNegativeMetadataCache(99999L) shouldBe true
+    }
+
+    @Test
+    fun `tracker yolunda gecerli NOT_MATCHED veya MATCHED kaydi varsa aga gitmeden doner`() = runTest {
+        // 1. NOT_MATCHED önceden kaydedilmiş
+        cache.saveMatch(
+            mangaId = 1L,
+            title = "Not Found Manga",
+            authors = emptyList(),
+            trackerRemoteId = 88888L,
+            status = MatchStatus.NOT_MATCHED,
+            reason = MatchReason.TRACKER,
+            score = 0.0,
+            anilistId = null,
+        )
+
+        val inputNotFound = ResolverMangaInput(
+            mangaId = 1L,
+            title = "Not Found Manga",
+            anilistTrackerId = 88888L,
+        )
+
+        val resNotFound = resolver.resolve(inputNotFound)
+        resNotFound.status shouldBe MatchStatus.NOT_MATCHED
+        resNotFound.reason shouldBe MatchReason.TRACKER
+        resNotFound.candidate.shouldBeNull()
+        resNotFound.isFromCache shouldBe true
+        fakeSource.getByIdsCalls shouldHaveSize 0 // Ağa gidilmedi!
+
+        // 2. MATCHED ve metadata önceden kaydedilmiş
+        val candidate = sampleCandidate(id = 77777L, title = "Found Manga")
+        cache.saveMetadata(candidate)
+        cache.saveMatch(
+            mangaId = 2L,
+            title = "Found Manga",
+            authors = emptyList(),
+            trackerRemoteId = 77777L,
+            status = MatchStatus.MATCHED,
+            reason = MatchReason.TRACKER,
+            score = 1.0,
+            anilistId = 77777L,
+        )
+
+        val inputFound = ResolverMangaInput(
+            mangaId = 2L,
+            title = "Found Manga",
+            anilistTrackerId = 77777L,
+        )
+
+        val resFound = resolver.resolve(inputFound)
+        resFound.status shouldBe MatchStatus.MATCHED
+        resFound.reason shouldBe MatchReason.TRACKER
+        resFound.candidate.shouldNotBeNull()
+        resFound.candidate.id shouldBe 77777L
+        resFound.isFromCache shouldBe true
+        fakeSource.getByIdsCalls shouldHaveSize 0 // Yine ağa gidilmedi!
+    }
+
+    @Test
+    fun `prefetch bos donen IDler icin 30 gunluk negatif kayit tutar ve sonraki prefetchte sormaz`() = runTest {
+        fakeSource.idMapToReturn[101L] = sampleCandidate(id = 101L, title = "Manga 101")
+        // 102L döndürülmüyor
+
+        // 1. İlk prefetch çağrısı
+        resolver.prefetchByIds(listOf(101L, 102L))
+
+        fakeSource.getByIdsCalls shouldHaveSize 1
+        fakeSource.getByIdsCalls[0] shouldBe listOf(101L, 102L)
+
+        cache.getMetadata(101L).shouldNotBeNull()
+        cache.isNegativeMetadataCache(102L) shouldBe true
+        cache.getMetadata(102L).shouldBeNull()
+
+        // 2. İkinci prefetch çağrısı: 101 ve 102 önbellekte olduğundan (102 negatif) tekrar sorulmaz
+        fakeSource.idMapToReturn[103L] = sampleCandidate(id = 103L, title = "Manga 103")
+        resolver.prefetchByIds(listOf(101L, 102L, 103L))
+
+        fakeSource.getByIdsCalls shouldHaveSize 2
+        fakeSource.getByIdsCalls[1] shouldBe listOf(103L) // Yalnızca 103L soruldu!
+
+        // 3. 31 gün sonra: 102L negatif kaydının süresi dolar, tekrar sorulur
+        currentTime += 31L * 24 * 60 * 60 * 1000
+        resolver.prefetchByIds(listOf(102L))
+        fakeSource.getByIdsCalls shouldHaveSize 3
+        fakeSource.getByIdsCalls[2] shouldBe listOf(102L)
+    }
+
+    @Test
+    fun `tracker veya prefetch sirasinda ag hatasi olusursa diske hicbir sey yazilmaz`() = runTest {
+        val metadataDir = File(tempDir, "metadata")
+        val matchesDir = File(tempDir, "matches")
+
+        // 1. Prefetch sırasında ağ hatası
+        fakeSource.throwErrorOnGetByIds = IOException("Ağ bağlantısı koptu")
+        shouldThrow<IOException> {
+            resolver.prefetchByIds(listOf(555L, 666L))
+        }
+
+        // metadata klasöründe hiçbir dosya oluşmamalı
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+
+        // 2. Tracker resolve sırasında ağ hatası
+        val input = ResolverMangaInput(mangaId = 99L, title = "Crash Manga", anilistTrackerId = 777L)
+        shouldThrow<IOException> {
+            resolver.resolve(input)
+        }
+
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+        matchesDir.listFiles().orEmpty() shouldHaveSize 0
+    }
+
+    @Test
+    fun `aramada yalnizca eslesen adayin metadata dosyasi kaydedilir`() = runTest {
+        val matchedCand = sampleCandidate(id = 1000L, title = "Solo Leveling", format = "MANGA")
+        val otherCand = sampleCandidate(id = 2000L, title = "Solo Leveling Novel", format = "NOVEL")
+
+        fakeSource.candidatesToReturn = listOf(matchedCand, otherCand)
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Solo Leveling")
+        val result = resolver.resolve(input)
+
+        result.status shouldBe MatchStatus.MATCHED
+        result.candidate?.id shouldBe 1000L
+
+        // Yalnızca 1000.json kaydedilmeli, 2000.json kaydedilmemelidir
+        val matchedMetaFile = File(tempDir, "metadata/1000.json")
+        val otherMetaFile = File(tempDir, "metadata/2000.json")
+
+        matchedMetaFile.exists() shouldBe true
+        otherMetaFile.exists() shouldBe false
+    }
 }
 
 private class FakeAniListMetadataSource : AniListMetadataSource {
