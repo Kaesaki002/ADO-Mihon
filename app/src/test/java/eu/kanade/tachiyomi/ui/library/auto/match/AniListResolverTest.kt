@@ -11,6 +11,11 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Protocol
+import okhttp3.Response
+import okhttp3.ResponseBody.Companion.toResponseBody
 import java.io.File
 import java.io.IOException
 
@@ -705,6 +710,132 @@ class AniListResolverTest {
 
         matchedMetaFile.exists() shouldBe true
         otherMetaFile.exists() shouldBe false
+    }
+
+    // ========================================================
+    // 9. Gerçek AniListHttpMetadataSource ile Hata İzolasyonu Testleri
+    // ========================================================
+
+    @Test
+    fun `gercek AniListHttpMetadataSource HTTP 500 aldiginda resolver hata firlatir ve diske hicbir sey yazmaz`() = runTest {
+        val mockClient = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                Response.Builder()
+                    .request(chain.request())
+                    .protocol(Protocol.HTTP_1_1)
+                    .code(500)
+                    .message("Internal Server Error")
+                    .body("Sunucu Hatasi".toResponseBody("text/plain".toMediaType()))
+                    .build()
+            }
+            .build()
+
+        val realHttpSource = AniListHttpMetadataSource(client = mockClient, endpoint = "http://localhost:12345/graphql")
+        val isolatedResolver = AniListResolver(metadataSource = realHttpSource, matchCache = cache)
+
+        val metadataDir = File(tempDir, "metadata")
+        val matchesDir = File(tempDir, "matches")
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note")
+        val ex = shouldThrow<IOException> {
+            isolatedResolver.resolve(input)
+        }
+        ex.message shouldContain "500"
+
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+        matchesDir.listFiles().orEmpty() shouldHaveSize 0
+    }
+
+    @Test
+    fun `gercek AniListHttpMetadataSource HTTP 200 ve GraphQL errors aldiginda resolver hata firlatir ve diske hicbir sey yazmaz`() = runTest {
+        val errorJson = """
+            {
+                "errors": [
+                    { "message": "GraphQL syntax error", "status": 400 }
+                ],
+                "data": null
+            }
+        """.trimIndent()
+
+        val mockClient = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                Response.Builder()
+                    .request(chain.request())
+                    .protocol(Protocol.HTTP_1_1)
+                    .code(200)
+                    .message("OK")
+                    .body(errorJson.toResponseBody("application/json".toMediaType()))
+                    .build()
+            }
+            .build()
+
+        val realHttpSource = AniListHttpMetadataSource(client = mockClient, endpoint = "http://localhost:12345/graphql")
+        val isolatedResolver = AniListResolver(metadataSource = realHttpSource, matchCache = cache)
+
+        val metadataDir = File(tempDir, "metadata")
+        val matchesDir = File(tempDir, "matches")
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note")
+        val ex = shouldThrow<IOException> {
+            isolatedResolver.resolve(input)
+        }
+        ex.message shouldContain "GraphQL syntax error"
+
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+        matchesDir.listFiles().orEmpty() shouldHaveSize 0
+    }
+
+    @Test
+    fun `gercek AniListHttpMetadataSource bozuk JSON aldiginda resolver hata firlatir ve diske hicbir sey yazmaz`() = runTest {
+        val mockClient = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                Response.Builder()
+                    .request(chain.request())
+                    .protocol(Protocol.HTTP_1_1)
+                    .code(200)
+                    .message("OK")
+                    .body("{ bozuk json %%%".toResponseBody("application/json".toMediaType()))
+                    .build()
+            }
+            .build()
+
+        val realHttpSource = AniListHttpMetadataSource(client = mockClient, endpoint = "http://localhost:12345/graphql")
+        val isolatedResolver = AniListResolver(metadataSource = realHttpSource, matchCache = cache)
+
+        val metadataDir = File(tempDir, "metadata")
+        val matchesDir = File(tempDir, "matches")
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note")
+        shouldThrow<Exception> {
+            isolatedResolver.resolve(input)
+        }
+
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+        matchesDir.listFiles().orEmpty() shouldHaveSize 0
+    }
+
+    @Test
+    fun `gercek AniListHttpMetadataSource ag hatasi aldiginda resolver hata firlatir ve diske hicbir sey yazmaz`() = runTest {
+        val mockClient = OkHttpClient.Builder()
+            .addInterceptor {
+                throw IOException("Ağ bağlantısı koptu")
+            }
+            .build()
+
+        val realHttpSource = AniListHttpMetadataSource(client = mockClient, endpoint = "http://localhost:12345/graphql")
+        val isolatedResolver = AniListResolver(metadataSource = realHttpSource, matchCache = cache)
+
+        val metadataDir = File(tempDir, "metadata")
+        val matchesDir = File(tempDir, "matches")
+
+        val input = ResolverMangaInput(mangaId = 1L, title = "Death Note")
+        val ex = shouldThrow<IOException> {
+            isolatedResolver.resolve(input)
+        }
+        ex.message shouldContain "Ağ bağlantısı koptu"
+
+        metadataDir.listFiles().orEmpty() shouldHaveSize 0
+        matchesDir.listFiles().orEmpty() shouldHaveSize 0
     }
 }
 

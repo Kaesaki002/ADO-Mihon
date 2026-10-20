@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.ui.library.auto.match
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
@@ -150,10 +151,25 @@ query (${'$'}ids: [Int], ${'$'}perPage: Int) {
 
                     val bodyString = response.body.string()
                     val pageResponse = AniListJsonParser.decodeFromString<GraphQLPageWrapper>(bodyString)
-                    val mediaList = pageResponse.data?.Page?.media ?: emptyList()
-                    val candidates = mediaList.map { it.toCandidate() }
+
+                    if (!pageResponse.errors.isNullOrEmpty()) {
+                        val errorMessages = pageResponse.errors.mapNotNull { it.message }.joinToString("; ")
+                        val errorText = if (errorMessages.isNotBlank()) errorMessages else "Bilinmeyen GraphQL hatası"
+                        return@executeWithRetry RateLimitResponse.Error(
+                            IOException("AniList GraphQL hatası: $errorText"),
+                        )
+                    }
+
+                    val page = pageResponse.data?.Page
+                        ?: return@executeWithRetry RateLimitResponse.Error(
+                            IOException("AniList API yanıtında 'data' veya 'Page' alanı eksik."),
+                        )
+
+                    val candidates = page.media.map { it.toCandidate() }
                     RateLimitResponse.Success(candidates)
                 }
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 RateLimitResponse.Error(e)
             }
@@ -164,6 +180,13 @@ query (${'$'}ids: [Int], ${'$'}perPage: Int) {
 @Serializable
 private data class GraphQLPageWrapper(
     val data: GraphQLDataWrapper? = null,
+    val errors: List<GraphQLErrorDto>? = null,
+)
+
+@Serializable
+private data class GraphQLErrorDto(
+    val message: String? = null,
+    val status: Int? = null,
 )
 
 @Serializable
@@ -175,3 +198,4 @@ private data class GraphQLDataWrapper(
 private data class GraphQLPageContainer(
     val media: List<AniListMediaDto> = emptyList(),
 )
+

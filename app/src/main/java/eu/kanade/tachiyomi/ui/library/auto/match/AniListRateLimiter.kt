@@ -98,4 +98,4 @@ sealed class RateLimitResponse<out T> {
     data class Error(val exception: Exception) : RateLimitResponse<Nothing>()
 }
 
-class AniListRateLimitException(message: String) : Exception(message)
+class AniListRateLimitException(message: String) : java.io.IOException(message)
