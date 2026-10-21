@@ -55,6 +55,7 @@ class LibrarySettingsViewModel(
     }
 
     fun setSort(category: Category?, mode: LibrarySort.Type, direction: LibrarySort.Direction) {
+        if (category != null && category.id < 0L) return
         viewModelScope.launch {
             setSortModeForCategory.await(category, mode, direction)
         }

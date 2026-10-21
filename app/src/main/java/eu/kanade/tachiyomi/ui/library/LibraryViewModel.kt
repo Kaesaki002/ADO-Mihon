@@ -20,6 +20,7 @@ import eu.kanade.domain.manga.interactor.UpdateManga
 import eu.kanade.presentation.library.components.LibraryToolbarTitle
 import eu.kanade.presentation.manga.DownloadAction
 import eu.kanade.tachiyomi.data.cache.CoverCache
+import eu.kanade.tachiyomi.ui.library.auto.AutoCategoryGrouper
 import eu.kanade.tachiyomi.data.download.DownloadCache
 import eu.kanade.tachiyomi.data.download.DownloadManager
 import eu.kanade.tachiyomi.data.track.TrackerManager
@@ -150,8 +151,8 @@ class LibraryViewModel(
         getCategories.subscribe(),
         getFavoritesFlow(),
         combine(tracks, getTrackingFiltersFlow(), ::Pair),
-        getLibraryItemPreferencesFlow(),
-    ) { searchQuery, categories, favorites, (tracksMap, trackingFilters), itemPreferences ->
+        combine(getLibraryItemPreferencesFlow(), libraryPreferences.autoCategories.changes(), ::Pair),
+    ) { searchQuery, categories, favorites, (tracksMap, trackingFilters), (itemPreferences, autoCategoriesEnabled) ->
         val showSystemCategory = favorites.any { it.libraryManga.categories.contains(0) }
         val filteredFavorites = favorites
             .applyFilters(tracksMap, trackingFilters, itemPreferences)
@@ -171,6 +172,7 @@ class LibraryViewModel(
             favorites = filteredFavorites,
             tracksMap = tracksMap,
             loggedInTrackerIds = trackingFilters.keys,
+            autoCategoriesEnabled = autoCategoriesEnabled,
         )
     }
         .distinctUntilChanged()
@@ -179,6 +181,7 @@ class LibraryViewModel(
                 data = data,
                 groupedFavorites = data.favorites
                     .applyGrouping(data.categories, data.showSystemCategory)
+                    .let { AutoCategoryGrouper.groupWithAutoCategories(it, data.favorites, data.autoCategoriesEnabled) }
                     .applySort(data.favoritesById, data.tracksMap, data.loggedInTrackerIds),
             )
         }
@@ -710,10 +713,11 @@ class LibraryViewModel(
 
     fun updateActiveCategoryIndex(index: Int) {
         activeCategoryIndex.update { index }
-        // Coerce here rather than reading it back off [state], which is derived asynchronously
-        // and would still hold the previous index at this point.
-        val lastIndex = state.value.displayedCategories.lastIndex.coerceAtLeast(0)
-        libraryPreferences.lastUsedCategory.set(index.coerceIn(0, lastIndex))
+        val category = state.value.displayedCategories.getOrNull(index)
+        if (category == null || category.id >= 0L) {
+            val lastIndex = state.value.displayedCategories.lastIndex.coerceAtLeast(0)
+            libraryPreferences.lastUsedCategory.set(index.coerceIn(0, lastIndex))
+        }
     }
 
     fun openChangeCategoryDialog() {
@@ -721,8 +725,8 @@ class LibraryViewModel(
             // Create a copy of selected manga
             val mangaList = selectedManga
 
-            // Hide the default category because it has a different behavior than the ones from db.
-            val categories = state.value.displayedCategories.filter { it.id != 0L }
+            // Hide the default category and virtual categories because they have a different behavior than the ones from db.
+            val categories = state.value.displayedCategories.filter { it.id > 0L }
 
             val mangaCategoryIds = mangaList.map { getCategoryIds(it) }
             val common = mangaCategoryIds.reduceOrNull { set1, set2 -> set1 intersect set2 }.orEmpty()
@@ -783,6 +787,7 @@ class LibraryViewModel(
         val favorites: List<LibraryItem> = emptyList(),
         val tracksMap: Map</* Manga */ Long, List<Track>> = emptyMap(),
         val loggedInTrackerIds: Set<Long> = emptySet(),
+        val autoCategoriesEnabled: Boolean = false,
     ) {
         val favoritesById by lazy { favorites.associateBy { it.id } }
     }
@@ -804,10 +809,11 @@ class LibraryViewModel(
     ) {
         val displayedCategories: List<Category> = groupedFavorites.keys.toList()
 
-        val coercedActiveCategoryIndex = activeCategoryIndex.coerceIn(
-            minimumValue = 0,
-            maximumValue = displayedCategories.lastIndex.coerceAtLeast(0),
-        )
+        val coercedActiveCategoryIndex = if (activeCategoryIndex in displayedCategories.indices) {
+            activeCategoryIndex
+        } else {
+            0
+        }
 
         val activeCategory: Category? = displayedCategories.getOrNull(coercedActiveCategoryIndex)
 

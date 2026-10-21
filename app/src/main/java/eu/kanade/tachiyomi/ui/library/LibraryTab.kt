@@ -121,7 +121,10 @@ data object LibraryTab : Tab {
                     onClickSelectAll = viewModel::selectAll,
                     onClickInvertSelection = viewModel::invertSelection,
                     onClickFilter = viewModel::showSettingsDialog,
-                    onClickRefresh = { scope.launch { onClickRefresh(state.activeCategory) } },
+                    onClickRefresh = {
+                        scope.launch { onClickRefresh(state.activeCategory) }
+                        Unit
+                    }.takeIf { (state.activeCategory?.id ?: 0L) >= 0L },
                     onClickGlobalUpdate = { scope.launch { onClickRefresh(null) } },
                     onClickOpenRandomManga = {
                         scope.launch {
@@ -206,7 +209,14 @@ data object LibraryTab : Tab {
                             viewModel.toggleRangeSelection(category, manga)
                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         },
-                        onRefresh = { onClickRefresh(state.activeCategory) },
+                        onRefresh = {
+                            val activeCat = state.activeCategory
+                            if (activeCat != null && activeCat.id < 0L) {
+                                false
+                            } else {
+                                onClickRefresh(activeCat)
+                            }
+                        },
                         onGlobalSearchClicked = {
                             navigator.push(GlobalSearchScreen(viewModel.state.value.searchQuery ?: ""))
                         },

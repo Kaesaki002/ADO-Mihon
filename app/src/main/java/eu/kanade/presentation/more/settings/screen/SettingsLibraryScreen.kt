@@ -103,6 +103,11 @@ object SettingsLibraryScreen : SearchableSettings {
                         true
                     },
                 ),
+                Preference.PreferenceItem.SwitchPreference(
+                    preference = libraryPreferences.autoCategories,
+                    title = "Otomatik kategoriler",
+                    subtitle = "Mangaları kendi kaynak etiketlerine göre dinamik sanal sekmelerde gruplar (harici ağ sorgusu yapmaz)",
+                ),
             ),
         )
     }
